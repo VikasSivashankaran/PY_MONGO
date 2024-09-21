@@ -12,3 +12,5 @@ def register_routes(app):
         data = request.json
         inserted_id = service.add_item(data)
         return jsonify({"inserted_id": inserted_id}), 201
+    
+    @app.route('/item', methods=['PUT'])
