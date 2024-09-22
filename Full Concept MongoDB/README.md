@@ -3,22 +3,23 @@ What is database?
 
 -> It is Object-oriented database which means it posses with key value pair
 
-terminal->1.type ->mongosh
+terminal->
+- mongosh
 (ensure mongo is installed)
 
-2.type->show dbs
+- show dbs
 (this shows the database in system if it obtained)
 
-3.type->use appdb
+- use appdb
 (this is name of database that going to use to store data)
 
-4.type->db.users.insertOne({name:"VIkas"})
+- db.users.insertOne({name:"VIkas"})
 (this is the command to create a user with name in json format)
 
-5.type->db.users.find()
+- db.users.find()
 fetch the users in database
 
-6.type->db.users.insertMany()
+- db.users.insertMany()
 this used to insert more document or data in users' collection
 
 - db.users.find()                                   //display all data
