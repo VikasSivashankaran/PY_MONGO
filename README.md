@@ -41,6 +41,7 @@ this used to insert more document or data in users' collection
 - db.users.insertMany([ {name:"Ramesh", age:19, hobbies:["Singing"],address:{street:"Rameshst",city:"Texas"},balance:100,debt:200}, {name:"Suresh", age:44, hobbies:["Gaming"],address:{street:"Sureshst",city:"Coimbatore"},balance:20,debt:0}])
 
 - Complex Queries
+
 - db.users.find({name:{$eq:"Ramesh"}})   // eq means equal to
 
 - db.users.find({name:{$ne:"Ramesh"}})  //ne means not equal to
@@ -52,3 +53,52 @@ this used to insert more document or data in users' collection
 - db.users.find({age:{$lte:21}}) // code for less than and less than equal to
 
 - db.users.find({name:{$in:["Ramesh","Suresh"]}}) // this checks the name of particular person in its field
+- db.users.find({name:{$nin:["Ramesh","Suresh"]}}) // this checks the name of particular person in its field
+
+- db.users.find({age:{$exists:true}}) // this query will give data having age field
+
+- db.users.find({age:{$exists:false}})// data with no age field
+
+- db.users.insertOne({age:null,debt:2000,balance:10})
+- db.users.find({age:{$gte:20,$lte:40}})
+
+- db.users.find({age:{$gte:20,$lte:40},name:"Vikas"})//from age 20 to 40 name Vikas the value can get
+
+- db.users.find({$and:[{age:21},{name:"Vikas"}]})//AND operation
+- db.users.find({$or:[{age:21},{name:"Vikas"}]})//or operation
+-  db.users.find({age:{$lte:25}}) 
+- db.users.find({age:{$not:{$lte:25}}})
+- db.users.find({$expr:{$gt:["debt","balance"]}})//making comparision using "expr"
+- db.users.find({$expr:{$gt:["$debt","$balance"]}})
+- db.users.find({"address.city":"Texas"})//fetch data where city is texas
+
+- db.users.findOne({$expr:{$gt:["$debt","$balance"]}})
+
+- db.users.countDocuments({$expr:{$gt:["$debt","$balance"]}})
+- db.users.countDocuments({age:{$gte:21}})
+
+
+- Update Queries
+
+- db.users.updateOne({age:44},{$set:{age:34}})
+- db.users.find({age:34})
+
+- db.users.updateOne({_id:ObjectId('66efb2f04679fbdde6c73bf9')},{$set:{name:"Balakumar"}})
+
+- db.users.find({_id:ObjectId('66efb2f04679fbdde6c73bf9')})
+
+- db.users.updateOne({_id:ObjectId('66efb2f04679fbdde6c73bf9')},{$inc:{age:3}})//increment the age by 3
+
+- db.users.updateOne({_id:ObjectId('66efb2f04679fbdde6c73bf9')},{$rename:{balance:"remainingBalance"}})//rename
+- db.users.find({_id:ObjectId('66efb2f04679fbdde6c73bf9')})
+- db.users.updateOne({_id:ObjectId('66efb2f04679fbdde6c73bf9')},{$push:{hobbies:"Clapping"}})//pushing new hobby
+- db.users.updateOne({_id:ObjectId('66efb2f04679fbdde6c73bf9')},{$pull:{hobbies:"Dancing"}})// pull one hobby
+- db.users.updateOne({_id:ObjectId('66efb2f04679fbdde6c73bf9')},{$unset:{age:""}})
+- db.users.updateMany({address:{$exists:true}},{$unset:{address:""}})// deletes all address
+ 
+- db.users.find()
+- db.users.replaceOne({age:19},{name:"sivaa_in"})
+
+- db.users.deleteOne({debt:2000})
+- db.users.deleteMany({age:{$exists:false}})
+- show collections
